@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guess the Number</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <main class="card">
+      <div class="topbar">
+        <a class="btn btn-ghost" href="index.html">Home</a>
+        <a class="btn btn-ghost" href="about.html">About</a>
+      </div>
 
+      <h1>Guess the Number</h1>
+      <p>I’m thinking of a number between <strong>1</strong> and <strong>100</strong>.</p>
+
+      <div class="row">
+        <input id="guessInput" type="number" min="1" max="100" placeholder="Enter a number (1-100)" />
+        <button class="btn btn-primary" id="guessBtn">Guess</button>
+        <button class="btn btn-secondary" id="resetBtn">Reset</button>
+      </div>
+
+      <div class="status" id="statusText">Make your first guess 👀</div>
+
+      <div class="meta">
+        <div>Attempts: <span id="attempts">0</span></div>
+        <div id="rangeHint">Range: 1–100</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let secretNumber;
+    let attempts = 0;
+    let minRange = 1;
+    let maxRange = 100;
+
+    const guessInput = document.getElementById("guessInput");
+    const statusText = document.getElementById("statusText");
+    const attemptsText = document.getElementById("attempts");
+    const rangeHint = document.getElementById("rangeHint");
+    const guessBtn = document.getElementById("guessBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function startGame(){
+      secretNumber = Math.floor(Math.random() * 100) + 1;
+      attempts = 0;
+      minRange = 1;
+      maxRange = 100;
+      attemptsText.textContent = attempts;
+      rangeHint.textContent = `Range: ${minRange}–${maxRange}`;
+      statusText.textContent = "Make your first guess";
+      guessInput.value = "";
+      guessBtn.disabled = false;
+    }
+
+    function handleGuess(){
+      const guess = Number(guessInput.value);
+
+      if(!guessInput.value){
+        statusText.textContent = "Enter a number first.";
+        return;
+      }
+
+      attempts++;
+      attemptsText.textContent = attempts;
+
+      if(guess === secretNumber){
+        statusText.textContent = `Correct! The number was ${secretNumber}.`;
+        guessBtn.disabled = true;
+        return;
+      }
+
+      if(guess < secretNumber){
+        statusText.textContent = "Too low! Try again.";
+        minRange = Math.max(minRange, guess + 1);
+      } else {
+        statusText.textContent = "Too high! Try again.";
+        maxRange = Math.min(maxRange, guess - 1);
+      }
+
+      rangeHint.textContent = `Range: ${minRange}–${maxRange}`;
+      guessInput.value = "";
+    }
+
+    guessBtn.addEventListener("click", handleGuess);
+    resetBtn.addEventListener("click", startGame);
+
+    startGame();
+  </script>
+</body>
+</html>
