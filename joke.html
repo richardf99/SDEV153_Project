@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joke of the Day - 2RF</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
+<body class="portal-body">
+  <header class="portal-header">
+    <div class="portal-brand">2RF Gaming Portal</div>
+    <nav class="portal-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="portal-wrap">
+    <section class="portal-stage" aria-label="Joke of the Day">
+
+      <div class="portal-top">
+        <div class="portal-panel">
+          <div class="portal-welcome">
+            <h1>Joke of the Day</h1>
+            <p>Click for a joke, then reveal the answer.</p>
+
+            <div class="row">
+              <button id="jokeBtn" type="button">Tell me a joke</button>
+              <button id="answerBtn" type="button">Show Answer</button>
+              <button id="copyBtn" type="button">Copy</button>
+            </div>
+
+            <div class="status" id="jokeText" role="status" aria-live="polite">
+              Ready when you are
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-panel portal-image">
+          <img src="myportal.jpeg" alt="Gaming theme" />
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="portal-footer">2RF Interactive</footer>
+
+  <script>
+    const jokes = [
+      { setup: "Why don’t programmers like nature?", punchline: "Too many bugs." },
+      { setup: "Why do programmers prefer dark mode?", punchline: "Because light attracts bugs." },
+      { setup: "Why do Java developers wear glasses?", punchline: "Because they don’t C#." },
+      { setup: "Why was the JavaScript developer sad?", punchline: "Because he didn’t Node how to Express himself." },
+      { setup: "Why did the developer go broke?", punchline: "Because they used up all their cache." },
+      { setup: "Why did the computer show up at work late?", punchline: "It had a hard drive." },
+      { setup: "Why did the function break up with the loop?", punchline: "It felt like it was going nowhere." },
+      { setup: "Why did the scarecrow become a successful developer?", punchline: "He was outstanding in his field." }
+    ];
+
+    const jokeText = document.getElementById("jokeText");
+    let currentJoke = null;
+
+    document.getElementById("jokeBtn").addEventListener("click", () => {
+      currentJoke = jokes[Math.floor(Math.random() * jokes.length)];
+      jokeText.textContent = currentJoke.setup;
+    });
+
+    document.getElementById("answerBtn").addEventListener("click", () => {
+      if(!currentJoke){
+        jokeText.textContent = "Click 'Tell me a joke' first!";
+        return;
+      }
+      jokeText.textContent = currentJoke.punchline;
+    });
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(jokeText.textContent);
+        const old = jokeText.textContent;
+        jokeText.textContent = "Copied!";
+        setTimeout(() => jokeText.textContent = old, 800);
+      } catch {
+        jokeText.textContent = "Copy not supported in this browser.";
+      }
+    });
+  </script>
+</body>
+</html>
