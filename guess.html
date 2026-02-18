@@ -44,49 +44,57 @@
 
   <footer class="portal-footer">2RF Interactive</footer>
 
-  <script>
-    let secret = Math.floor(Math.random() * 100) + 1;
-    let attempts = 0;
-    let min = 1, max = 100;
+<script>
+  let secret = Math.floor(Math.random() * 100) + 1;
+  let attempts = 0;
+  let min = 1, max = 100;
 
-    const input = document.getElementById("guessInput");
-    const status = document.getElementById("statusText");
-    const attemptsText = document.getElementById("attempts");
-    const range = document.getElementById("rangeHint");
+  const input = document.getElementById("guessInput");
+  const status = document.getElementById("statusText");
+  const attemptsText = document.getElementById("attempts");
+  const range = document.getElementById("rangeHint");
 
-    document.getElementById("guessBtn").onclick = () => {
-      const guess = Number(input.value);
-      if (!guess) return status.textContent = "Enter a number.";
+  function makeGuess(){
+    const guess = Number(input.value);
+    if (!input.value) return status.textContent = "Enter a number.";
+    if (guess < 1 || guess > 100) return status.textContent = "Keep it between 1 and 100.";
 
-      attempts++;
-      attemptsText.textContent = attempts;
+    attempts++;
+    attemptsText.textContent = attempts;
 
-      if (guess === secret) {
-        status.textContent = `Correct! The number was ${secret}.`;
-        return;
-      }
+    if (guess === secret){
+      status.textContent = `Correct! The number was ${secret}.`;
+      return;
+    }
 
-      if (guess < secret) {
-        status.textContent = "Too low!";
-        min = guess + 1;
-      } else {
-        status.textContent = "Too high!";
-        max = guess - 1;
-      }
+    if (guess < secret){
+      status.textContent = "Too low!";
+      if (guess >= min) min = guess + 1;
+    } else {
+      status.textContent = "Too high!";
+      if (guess <= max) max = guess - 1;
+    }
 
-      range.textContent = `Range: ${min}–${max}`;
-      input.value = "";
-    };
+    range.textContent = `Range: ${min}–${max}`;
+    input.value = "";
+    input.focus();
+  }
 
-    document.getElementById("resetBtn").onclick = () => {
-      secret = Math.floor(Math.random() * 100) + 1;
-      attempts = 0;
-      min = 1; max = 100;
-      attemptsText.textContent = 0;
-      range.textContent = "Range: 1–100";
-      status.textContent = "Game reset. Guess again!";
-      input.value = "";
-    };
-  </script>
+  document.getElementById("guessBtn").onclick = makeGuess;
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") makeGuess();
+  });
+
+  document.getElementById("resetBtn").onclick = () => {
+    secret = Math.floor(Math.random() * 100) + 1;
+    attempts = 0; min = 1; max = 100;
+    attemptsText.textContent = 0;
+    range.textContent = "Range: 1–100";
+    status.textContent = "Game reset. Guess again!";
+    input.value = "";
+    input.focus();
+  };
+</script>
 </body>
 </html>
