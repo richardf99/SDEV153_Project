@@ -6,90 +6,87 @@
   <title>Guess the Number</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="page">
-    <main class="card">
-      <div class="topbar">
-        <a class="btn btn-ghost" href="index.html">Home</a>
-        <a class="btn btn-ghost" href="about.html">About</a>
+
+<body class="portal-body">
+  <header class="portal-header">
+    <div class="portal-brand">2RF Gaming Portal</div>
+    <nav class="portal-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="portal-wrap">
+    <section class="portal-stage">
+      <div class="portal-top">
+
+        <div class="portal-panel">
+          <h1>Guess the Number</h1>
+         <p>I’m thinking of a number between <strong>1</strong> and <strong>100</strong>.</p>
+
+          <div class="row">
+            <input id="guessInput" type="number" min="1" max="100" placeholder="Enter a number" />
+            <button id="guessBtn">Guess</button>
+            <button id="resetBtn">Reset</button>
+          </div>
+
+          <div class="status" id="statusText">Make your first guess </div>
+          <p>Attempts: <span id="attempts">0</span> | <span id="rangeHint">Range: 1–100</span></p>
+        </div>
+
+        <div class="portal-panel portal-image">
+          <img src="myportal.jpeg" alt="Game image" />
+        </div>
+
       </div>
+    </section>
+  </main>
 
-      <h1>Guess the Number</h1>
-      <p>I’m thinking of a number between <strong>1</strong> and <strong>100</strong>.</p>
-
-      <div class="row">
-        <input id="guessInput" type="number" min="1" max="100" placeholder="Enter a number (1-100)" />
-        <button class="btn btn-primary" id="guessBtn">Guess</button>
-        <button class="btn btn-secondary" id="resetBtn">Reset</button>
-      </div>
-
-      <div class="status" id="statusText">Make your first guess 👀</div>
-
-      <div class="meta">
-        <div>Attempts: <span id="attempts">0</span></div>
-        <div id="rangeHint">Range: 1–100</div>
-      </div>
-    </main>
-  </div>
+  <footer class="portal-footer">2RF Interactive</footer>
 
   <script>
-    let secretNumber;
+    let secret = Math.floor(Math.random() * 100) + 1;
     let attempts = 0;
-    let minRange = 1;
-    let maxRange = 100;
+    let min = 1, max = 100;
 
-    const guessInput = document.getElementById("guessInput");
-    const statusText = document.getElementById("statusText");
+    const input = document.getElementById("guessInput");
+    const status = document.getElementById("statusText");
     const attemptsText = document.getElementById("attempts");
-    const rangeHint = document.getElementById("rangeHint");
-    const guessBtn = document.getElementById("guessBtn");
-    const resetBtn = document.getElementById("resetBtn");
+    const range = document.getElementById("rangeHint");
 
-    function startGame(){
-      secretNumber = Math.floor(Math.random() * 100) + 1;
-      attempts = 0;
-      minRange = 1;
-      maxRange = 100;
-      attemptsText.textContent = attempts;
-      rangeHint.textContent = `Range: ${minRange}–${maxRange}`;
-      statusText.textContent = "Make your first guess";
-      guessInput.value = "";
-      guessBtn.disabled = false;
-    }
-
-    function handleGuess(){
-      const guess = Number(guessInput.value);
-
-      if(!guessInput.value){
-        statusText.textContent = "Enter a number first.";
-        return;
-      }
+    document.getElementById("guessBtn").onclick = () => {
+      const guess = Number(input.value);
+      if (!guess) return status.textContent = "Enter a number.";
 
       attempts++;
       attemptsText.textContent = attempts;
 
-      if(guess === secretNumber){
-        statusText.textContent = `Correct! The number was ${secretNumber}.`;
-        guessBtn.disabled = true;
+      if (guess === secret) {
+        status.textContent = `Correct! The number was ${secret}.`;
         return;
       }
 
-      if(guess < secretNumber){
-        statusText.textContent = "Too low! Try again.";
-        minRange = Math.max(minRange, guess + 1);
+      if (guess < secret) {
+        status.textContent = "Too low!";
+        min = guess + 1;
       } else {
-        statusText.textContent = "Too high! Try again.";
-        maxRange = Math.min(maxRange, guess - 1);
+        status.textContent = "Too high!";
+        max = guess - 1;
       }
 
-      rangeHint.textContent = `Range: ${minRange}–${maxRange}`;
-      guessInput.value = "";
-    }
+      range.textContent = `Range: ${min}–${max}`;
+      input.value = "";
+    };
 
-    guessBtn.addEventListener("click", handleGuess);
-    resetBtn.addEventListener("click", startGame);
-
-    startGame();
+    document.getElementById("resetBtn").onclick = () => {
+      secret = Math.floor(Math.random() * 100) + 1;
+      attempts = 0;
+      min = 1; max = 100;
+      attemptsText.textContent = 0;
+      range.textContent = "Range: 1–100";
+      status.textContent = "Game reset. Guess again!";
+      input.value = "";
+    };
   </script>
 </body>
 </html>
