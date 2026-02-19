@@ -1,1 +1,109 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - 2RF</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="portal-body">
+  <header class="portal-header">
+    <div class="portal-brand">2RF Gaming Portal</div>
+    <nav class="portal-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+  </header>
+
+  <main class="portal-wrap">
+    <section class="portal-stage" aria-label="About this website">
+
+      <div class="portal-top">
+        <div class="portal-panel">
+          <div class="portal-welcome">
+            <h1>About</h1>
+            <p>This website is a mini game hub built using HTML, CSS, and JavaScript.</p>
+
+            <h2 style="margin-top:14px;">Features</h2>
+            <ul style="margin:8px 0 0 18px;">
+              <li>Simple navigation from different pages</li>
+              <li>Interact with buttons and get responses</li>
+              <li>Accessible design with alt text and clear UI</li>
+              <li>Readable text and clear layout</li>
+              <li>Responsive design for different screen sizes</li>
+            </ul>
+
+            <h2 style="margin-top:14px;">Games Table</h2>
+            <table style="width:100%;margin-top:8px;border-collapse:collapse;background:rgb(255,255,255);">
+              <tr>
+                <th style="border:1px solid rgb(26,60,102);padding:8px;">Page</th>
+                <th style="border:1px solid rgb(26,60,102);padding:8px;">What it does</th>
+              </tr>
+              <tr>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">guess.html</td>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">Guess a number 1–100</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">joke.html</td>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">Random joke + answer</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">diduknow.html</td>
+                <td style="border:1px solid rgb(26,60,102);padding:8px;">Random fun fact</td>
+              </tr>
+            </table>
+
+            <h2 style="margin-top:14px;">Helpful Links</h2>
+            <ul style="margin:8px 0 0 18px;">
+              <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG Guidelines</a></li>
+              <li><a href="https://pages.github.com/" target="_blank">GitHub Pages</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">MDN Web Docs</a></li>
+            </ul>
+
+            <h2 style="margin-top:14px;">Quick Feedback</h2>
+            <p style="margin-top:6px;">Pick your favorite game:</p>
+
+            <form id="feedbackForm">
+              <div class="row">
+                <input id="name" type="text" placeholder="Your name" required />
+                <select id="favorite" required>
+                  <option value="">Choose one</option>
+                  <option>Guess the Number</option>
+                  <option>Joke of the Day</option>
+                  <option>Did U Know</option>
+                </select>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+
+            <div class="status" id="result">No feedback yet.</div>
+          </div>
+        </div>
+
+        <div class="portal-panel portal-image">
+          <img src="myportal.jpeg" alt="Gaming theme" />
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="portal-footer">2RF Interactive</footer>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const favorite = document.getElementById("favorite").value;
+
+      result.textContent = `Thanks ${name}! Your favorite is: ${favorite}`;
+      form.reset();
+    });
+  </script>
+</body>
+</html>
