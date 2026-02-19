@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Did U Know - 2RF</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
+<body class="portal-body">
+  <header class="portal-header">
+    <div class="portal-brand">2RF Gaming Portal</div>
+    <nav class="portal-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="portal-wrap">
+    <section class="portal-stage" aria-label="Did You Know">
+
+      <div class="portal-top">
+        <div class="portal-panel">
+          <div class="portal-welcome">
+            <h1>Did U Know?</h1>
+            <p>Tap the button for a random fact.</p>
+
+            <div class="row">
+              <button id="factBtn" type="button">Give me a fact</button>
+            </div>
+
+            <div class="status" id="factText" role="status" aria-live="polite">
+              Ready for a fact?
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-panel portal-image">
+          <img src="myportal.jpeg" alt="Gaming theme" />
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="portal-footer">2RF Interactive</footer>
+
+  <script>
+    const facts = [
+      "Bananas are berries, but strawberries aren’t.",
+      "Sharks existed before trees.",
+      "A day on Venus is longer than a year on Venus.",
+      "The Eiffel Tower can be 15 cm taller during the summer.",
+      "The shortest war in history lasted 38 minutes.",
+      "A group of flamingos is called a 'flamboyance'.",
+      "The longest time between two twins being born is 87 days.",
+      "The unicorn is the national animal of Scotland.",
+      "There are more stars in the universe than grains of sand on Earth.",
+      "The first computer bug was an actual bug (a moth) found in a computer.",
+      "Sloths can hold their breath longer than dolphins can.",
+      "The heart of a shrimp is located in its head.",
+      "The world’s largest snowflake on record was 15 inches wide and 8 inches thick.",
+      "The average person walks the equivalent of three times around the world in a lifetime.",
+      "The longest English word is 189,819 letters long and takes over three hours to pronounce."
+    ];
+
+    const factText = document.getElementById("factText");
+
+    document.getElementById("factBtn").addEventListener("click", () => {
+      factText.textContent = facts[Math.floor(Math.random() * facts.length)];
+    });
+  </script>
+</body>
+</html>
