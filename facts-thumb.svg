@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" role="img" aria-labelledby="title desc">
+  <title id="title">Facts game thumbnail</title>
+  <desc id="desc">A light bulb and stars for random facts game.</desc>
+  <rect width="240" height="140" fill="#cfe3f6"/>
+  <circle cx="120" cy="62" r="30" fill="#1a3c66"/>
+  <rect x="108" y="90" width="24" height="16" rx="5" fill="#1a3c66"/>
+  <circle cx="60" cy="42" r="4" fill="#1a3c66"/>
+  <circle cx="184" cy="40" r="5" fill="#1a3c66"/>
+  <circle cx="170" cy="86" r="3" fill="#1a3c66"/>
+  <circle cx="76" cy="92" r="3" fill="#1a3c66"/>
+</svg>

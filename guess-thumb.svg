@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" role="img" aria-labelledby="title desc">
+  <title id="title">Guess game thumbnail</title>
+  <desc id="desc">A question mark and number symbols for guess the number game.</desc>
+  <rect width="240" height="140" fill="#cfe3f6"/>
+  <circle cx="70" cy="70" r="36" fill="#1a3c66"/>
+  <text x="70" y="82" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="44" font-weight="700">?</text>
+  <text x="145" y="58" fill="#1a3c66" font-family="Arial, sans-serif" font-size="22" font-weight="700">1 2 3</text>
+  <text x="145" y="92" fill="#1a3c66" font-family="Arial, sans-serif" font-size="22" font-weight="700">7 8 9</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" role="img" aria-labelledby="title desc">
+  <title id="title">Joke game thumbnail</title>
+  <desc id="desc">A speech bubble with a smiling face for joke of the day.</desc>
+  <rect width="240" height="140" fill="#cfe3f6"/>
+  <path d="M40 28h160a16 16 0 0 1 16 16v42a16 16 0 0 1-16 16H118l-20 18v-18H40a16 16 0 0 1-16-16V44a16 16 0 0 1 16-16z" fill="#1a3c66"/>
+  <circle cx="92" cy="64" r="4" fill="#fff"/>
+  <circle cx="130" cy="64" r="4" fill="#fff"/>
+  <path d="M86 82c8 10 30 10 38 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+</svg>

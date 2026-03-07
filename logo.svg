@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">2RF Gaming Portal logo</title>
+  <desc id="desc">Blue shield with the text 2RF in the center.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3c66"/>
+      <stop offset="100%" stop-color="#4f86c6"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 10l38 14v30c0 27-19 45-38 56C41 99 22 81 22 54V24z" fill="url(#g)"/>
+  <text x="60" y="68" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">2RF</text>
+</svg>
