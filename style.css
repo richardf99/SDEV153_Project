@@ -39,7 +39,6 @@ body {
 .portal-nav a:hover,
 .portal-nav a:focus {
   color: inherit;
-  color: inherit;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
